@@ -1,46 +1,114 @@
+<!-- Name Text Field Input -->
 <div class="form-group">
-    <label class="form-label" for="nama">Nama</label>
-    {{ html()->text('name')->class('form-control')->id('name')->placeholder('Nama Dosen') }}
+    <label class="form-label" for="name">Nama</label>
+    {{ html()->text('name')->class(["form-control", "is-invalid" => $errors->has('name')])->id('name')->placeholder('Nama Dosen') }}
+    @error('name')
+    <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+    @enderror
 </div>
 
+<!-- NIP Text Field Input -->
 <div class="form-group">
     <label class="form-label" for="nip">NIP</label>
-    {{ html()->text('nip')->class('form-control')->id('nip')->placeholder('NIP Dosen') }}
+    {{ html()->text('nip')->class(['form-control', 'is-invalid' => $errors->has('nip')])->id('nip')->placeholder('NIP Dosen') }}
+    @error('nip')
+    <div class="invalid-feedback">{{ $errors->first('nip') }}</div>
+    @enderror
 </div>
 
 <div class="form-group">
-    <label class="form-label" for="nidn">NIDN</label>
-    {{ html()->text('nidn')->class('form-control')->id('nidn')->placeholder('NIDN Dosen') }}
+    <label class="form-label" for="name">NIDN</label>
+    {{ html()->text('name')->class(["form-control", "is-invalid" => $errors->has('name')])->id('name')->placeholder('NIDN Dosen') }}
+    @error('name')
+    <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+    @enderror
 </div>
 
 <div class="form-group">
     <label class="form-label" for="nik">NIK</label>
-    {{ html()->text('nik')->class('form-control')->id('nik')->placeholder('NIK Dosen') }}
+    {{ html()->text('nik')->class(["form-control", "is-invalid" => $errors->has('nik')])->id('nik')->placeholder('NIK Dosen') }}
+    @error('nik')
+    <div class="invalid-feedback">{{ $errors->first('nik') }}</div>
+    @enderror
+</div>
+
+<div class="form-group">
+    <label class="form-label" for="karpeg">Karpeg:</label>
+    {{ html()->text('karpeg')->class(["form-control", "is-invalid" => $errors->has('karpeg')])->id('karpeg')->placeholder('Nomor Kartu Pegawai Dosen') }}
+    @error('karpeg')
+    <div class="invalid-feedback">{{ $errors->first('karpeg') }}</div>
+    @enderror
+</div>
+
+<div class="form-group">
+    <label class="form-label" for="npwp">NPWP:</label>
+    {{ html()->text('npwp')->class(["form-control", "is-invalid" => $errors->has('npwp')])->id('npwp')->placeholder('Nomor Pokok Wajib Pajak') }}
+    @error('npwp')
+    <div class="invalid-feedback">{{ $errors->first('npwp') }}</div>
+    @enderror
+</div>
+
+<!-- Department Input (Select) -->
+<div class="form-group">
+    <label class="form-label" for="department_id">Jurusan/Prodi:</label>
+    {{ html()->select('department_id')->options($departments)->class(["form-control", "is-invalid" => $errors->has('department_id')])->id('department_id')->placeholder('Jurusan / Program Studi') }}
+    @error('department_id')
+    <div class="invalid-feedback">{{ $errors->first('department_id') }}</div>
+    @enderror
 </div>
 
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label class="form-label" for="tempat_lahir">Tempat Lahir</label>
-            {{ html()->text('birthplace')->class('form-control')->id('birthplace')->placeholder('Tempat Lahir Dosen') }}
+            <label class="form-label" for="birthplace">Tempat Lahir:</label>
+            {{ html()->text('birthplace')->class(["form-control", "is-invalid" => $errors->has('birthplace')])->id('birthplace')->placeholder('Tempat Lahir') }}
+            @error('birthplace')
+            <div class="invalid-feedback">{{ $errors->first('birthplace') }}</div>
+            @enderror
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="form-group">
-            <label class="form-label" for="tempat_lahir">Tanggal Lahir</label>
-            {{ html()->date('birthdate')->class('form-control')->id('birthdate')->placeholder('Tanggal Lahir') }}
+            <label class="form-label" for="birthdate">Tanggal Lahir:</label>
+            {{ html()->text('birthdate')->class(["form-control", "is-invalid" => $errors->has('birthdate')])->id('birthdate')->placeholder('Tanggal Lahir') }}
+            @error('birthdate')
+            <div class="invalid-feedback">{{ $errors->first('birthdate') }}</div>
+            @enderror
         </div>
     </div>
 </div>
 
 <div class="form-group">
-    <label class="form-label" for="email">email</label>
-    {{ html()->text('email')->class('form-control')->id('email')->placeholder('Email Dosen') }}
+    <label class="form-label" for="gender">Jenis Kelamin:</label>
+    <div class="form-group">
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="gender" name="gender" class="custom-control-input">
+            <label class="custom-control-label" for="customRadioInline1">Pria</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="gender" name="gender" class="custom-control-input">
+            <label class="custom-control-label" for="customRadioInline2">Wanita</label>
+        </div>
+    </div>
+    @error('gender')
+    <div class="invalid-feedback">{{ $errors->first('gender') }}</div>
+    @enderror
 </div>
 
 <div class="form-group">
-    <label class="form-label" for="phone">No. HP</label>
-    {{ html()->text('phone')->class('form-control')->id('phone')->placeholder('No Telpon Dosen') }}
+    <label class="form-label" for="email">Email:</label>
+    {{ html()->text('email')->class(["form-control", "is-invalid" => $errors->has('email')])->id('email')->placeholder('Email Dosen') }}
+    @error('email')
+    <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+    @enderror
+</div>
+
+<div class="form-group">
+    <label class="form-label" for="phone">No HP:</label>
+    {{ html()->text('phone')->class(["form-control", "is-invalid" => $errors->has('phone')])->id('phone')->placeholder('No Handphone Dosen') }}
+    @error('phone')
+    <div class="invalid-feedback">{{ $errors->first('phone') }}</div>
+    @enderror
 </div>
 

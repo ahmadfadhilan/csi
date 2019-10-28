@@ -4,24 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Lecturer extends Model
+class Student extends Model
 {
-    public static $validation_rules = [
-        'email' =>'required|email',
-        'nidn' => 'required',
+    static $validation_rules = [
+        'email' => 'required|email',
+        'nim' => 'required',
         'name' => 'required',
-        'nik'  => 'required',
-        'birthdate' => 'required',
-        'birthplace' => 'required'
+        'year' => 'required',
     ];
 
-    protected $guarded=[];
-
+    protected $guarded = [];
     protected $dates = ['birthdate'];
-
     public $incrementing = false;
 
-    public function user(){
+    public function user()
+    {
         return $this->hasOne(User::class, 'id');
     }
 
@@ -29,5 +26,4 @@ class Lecturer extends Model
     {
         return optional($this->user)->email;
     }
-
 }

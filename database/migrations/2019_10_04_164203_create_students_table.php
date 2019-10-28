@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLecturersTable extends Migration
+class CreateStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,19 @@ class CreateLecturersTable extends Migration
      */
     public function up()
     {
-        Schema::create('lecturers', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->unsignedBigInteger('id');
-            $table->string('nik')->unique();
+            $table->string('nim')->unique();
             $table->string('name');
-            $table->string('nip')->nullable();
-            $table->string('nidn')->nullable();
-            $table->string('karpeg')->nullable();
-            $table->string('npwp')->nullable();
-            $table->integer('gender')->nullable(); //code: config/central/gender
+            $table->integer('year')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable();
+            $table->integer('gender')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('birthplace')->nullable();
-            $table->string('phone')->nullable();
             $table->text('address')->nullable();
-            $table->unsignedBigInteger('department_id')->nullable(); //code: table/Department/id
+            $table->bigInteger('marital_status')->nullable();
+            $table->string('phone')->nullable();
             $table->string('photo')->nullable();
-            $table->integer('marital_status')->nullable(); //code: config/central/marital_status
-            $table->integer('religion')->nullable(); //code: config/central/religion
-            $table->integer('association_type')->nullable();
             $table->timestamps();
 
             $table->primary('id');
@@ -46,6 +41,6 @@ class CreateLecturersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lecturers');
+        Schema::dropIfExists('students');
     }
 }
